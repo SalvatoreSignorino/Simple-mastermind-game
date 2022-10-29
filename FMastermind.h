@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -10,8 +11,8 @@ using FString = std::string;
 using FText = std::string;
 using int32 = int;
 
-class FBullCowGame;
-struct FBullCowCount;
+class FMastermindGame;
+struct FMastermindCount;
 enum class EGuessStatus;
 
 enum class EGuessStatus
@@ -23,16 +24,16 @@ enum class EGuessStatus
 };
 
 //Tutte le variabili inizializzate a 0
-struct FBullCowCount {
+struct FMastermindCount {
 	int32 Bulls = 0;
 	int32 Cows = 0;
 };
 
-class FBullCowGame {
+class FMastermindGame {
 public:
 
-	FBullCowGame();
-	~FBullCowGame();
+	FMastermindGame();
+	~FMastermindGame();
 	/* Mia Implementazione come qualsiasi altra funzione o variabile commentata, da rivedere
 	void PlayGame();
 	bool AskToPlayAgain();
@@ -48,12 +49,12 @@ public:
 	EGuessStatus CheckGuessValidity(FString &) const;
 	FText GetValidGuess();
 	
-	void Reset(); // TODO metti un tipo di ritorno più utile
+	void Reset(); // TODO metti un tipo di ritorno piÃ¹ utile
 	void PrintgameSummary();
 	void PrintIntro();
 	bool AskToPlayAgain();
 	void PlayGame();
-	FBullCowCount SubmitValidGuess(FString &);
+	FMastermindCount SubmitValidGuess(FString &);
 
 
 private:

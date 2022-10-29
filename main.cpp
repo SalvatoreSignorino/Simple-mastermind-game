@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "FBullAndCowGame.h"
+#include "FMastermind.h"
 
 using FText = std::string;
 using int32 = int;
@@ -9,15 +9,15 @@ using int32 = int;
 int main()
 {
 
-	FBullCowGame BCGame;
+	FMastermindGame MastermindGame;
 	// Introduzione al gioco
-	BCGame.PrintIntro();
+	MastermindGame.PrintIntro();
 
 	//Prende in input una parola tramite la funzione GetGuess() e stampa la ripetzione della parola inserita dal giocatore, il tutto avviene all'interno di PrintGuess()
-	//PlayGame() si limita solamente a chiamarla pi� volte tramite un ciclo for
+	//PlayGame() si limita solamente a chiamarla più volte tramite un ciclo for
 	do {
-		BCGame.PlayGame();
-	} while (BCGame.AskToPlayAgain());
+		MastermindGame.PlayGame();
+	} while (MastermindGame.AskToPlayAgain());
 
 	return 0;
 }
