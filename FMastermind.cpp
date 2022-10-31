@@ -10,8 +10,19 @@ using int32 = int;
 // Constructors and destructors
 FMastermindGame::FMastermindGame()
 {
+	/*
+	r = red;
+	g = green;
+	b = blue;
+	c = cyan;
+	y = yellow;
+	m = magenta;
+	p = purple; 
+	*/
+	ColorPool = {'r', 'g', 'b', 'c', 'y', 'm', 'p'};
 	Reset();
 }
+
 FMastermindGame::~FMastermindGame()
 {
 }
@@ -27,17 +38,16 @@ int32 FMastermindGame::GetMaxTries() const {
 
 EGuessStatus FMastermindGame::CheckGuessValidity(FString &PlayerGuess) const
 {
-	if (false) // se il tentativo non è un isogramma
-	{
-		return EGuessStatus::Not_Isogramm;
-	}
-	else if(PlayerGuess.length() != this->GetHiddenWorldLength()) // se il tentativo non ha la dimensione giusta
+	if(PlayerGuess.length() != this->GetHiddenWorldLength()) // se il tentativo non ha la dimensione giusta
 	{
 		return EGuessStatus::Wrong_Length;
 	}
-	else {
-		return EGuessStatus::Ok;
+
+	if(PlayerGuess.find_first_not_of("bcgmpry") != std::string::npos){
+		return EGuessStatus::Invalid_Input;
 	}
+	
+	return EGuessStatus::Ok;
 }
 
 void FMastermindGame::Reset()
@@ -165,10 +175,8 @@ std::string FMastermindGame::GetValidGuess()
 		{
 		case EGuessStatus::Ok:
 			break;
-		case EGuessStatus::Not_Isogramm:
-			break;
 		case EGuessStatus::Invalid_Input:
-			std::cout << "Per favore inserisci una parola formata da sole lettere e non altri caratteri\n" << std::endl;
+			std::cout << "Per favore inserisci una parola formata dalle sole lettere dei colori e non altri caratteri\n" << std::endl;
 			break;
 		case EGuessStatus::Wrong_Length:
 			std::cout << "Per favore inserisci una parola di lunghezza " << this->GetHiddenWorldLength() << std::endl;
@@ -176,7 +184,7 @@ std::string FMastermindGame::GetValidGuess()
 		default:
 			break;
 		}
-	} while (Status != EGuessStatus::Ok); // Il loop continua finch� non si hanno errori dovuti all'input del giocatore
+	} while (Status != EGuessStatus::Ok); // Il loop continua finché non si hanno errori dovuti all'input del giocatore
 
 	return Guess;
 }

@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <algorithm>
+#include <vector>
 
 #define TMap std::map
 
@@ -18,7 +19,6 @@ enum class EGuessStatus;
 enum class EGuessStatus
 {
 	Ok,
-	Not_Isogramm,
 	Invalid_Input,
 	Wrong_Length
 };
@@ -35,9 +35,6 @@ public:
 	FMastermindGame();
 	~FMastermindGame();
 	/* Mia Implementazione come qualsiasi altra funzione o variabile commentata, da rivedere
-	void PlayGame();
-	bool AskToPlayAgain();
-	void PrintIntro();
 	void SetPlayerInput();
 	void SetDifficulty();
 	*/
@@ -61,6 +58,7 @@ private:
 	int32 MyCurrentTry;
 	FString MyHiddenWord;
 	bool bGameWon;
+	std::vector <char> ColorPool;
 	/*
 	short Difficulty = 0;
 	FString PlayerGuess = "";
