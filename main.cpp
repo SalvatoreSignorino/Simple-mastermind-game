@@ -11,7 +11,6 @@ int main()
 
 	FMastermindGame MastermindGame;
 	// Introduzione al gioco
-	MastermindGame.PrintIntro();
 
 	//Prende in input una parola tramite la funzione GetGuess() e stampa la ripetzione della parola inserita dal giocatore, il tutto avviene all'interno di PrintGuess()
 	//PlayGame() si limita solamente a chiamarla più volte tramite un ciclo for
